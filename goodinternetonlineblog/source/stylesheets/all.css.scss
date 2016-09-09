@@ -1,0 +1,10 @@
+@import "normalize";
+@import "bourbon";
+$max-width: 1200px;
+@import "neat";
+
+@import "typography";
+
+#main {
+  @include outer-container;
+}

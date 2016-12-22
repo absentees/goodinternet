@@ -1,0 +1,11 @@
+$max-width: 1200px;
+
+@import 'normalize';
+@import 'bourbon';
+@import 'neat';
+
+// Variables
+@import 'base/*';
+
+// Components
+@import 'components/*';

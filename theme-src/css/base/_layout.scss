@@ -1,0 +1,9 @@
+body,
+html {
+  @include reset-box-model;
+}
+
+.container {
+  @include outer-container;
+  position: relative;
+}

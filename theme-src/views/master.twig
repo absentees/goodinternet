@@ -1,0 +1,17 @@
+{% include 'partials/head.twig' %}
+
+<body {{ function('body_class') }}>
+	<p class="skiplinks">
+	    <a href="#content">Skip To Main Content</a>
+	</p>
+	<div class="container">
+		{% include 'partials/header.twig' %}
+
+		<div class="content" id="content">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</div>
+	{% include 'partials/footer.twig' %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "goodinternet",
+  "version": "1.0.0",
+  "author": "Present Company",
+  "devDependencies": {
+    "jquery": "1.11.x",
+    "normalize-scss": "~3.0.3",
+    "bourbon": "~4.2.4",
+    "neat": "~1.7.2"
+  }
+}

@@ -1,0 +1,6 @@
+{
+	"interactive": false,
+	"scripts": {
+		"postinstall": "rm bower_components/normalize-scss/normalize.css"
+	}
+}

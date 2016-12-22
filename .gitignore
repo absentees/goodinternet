@@ -1,1 +1,9 @@
-config.codekit
+/vendor/*
+/wp/*
+/wp-content/*
+.htaccess
+.env
+/bower_components/
+/node_modules/
+*.sublime-project
+*.sublime-workspace

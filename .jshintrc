@@ -4,6 +4,7 @@
 	"curly": true,
 	"eqeqeq": true,
 	"futurehostile": true,
+	"esversion": 6,
 	"nonbsp": true,
 	"nonew": true,
 	"undef": true,

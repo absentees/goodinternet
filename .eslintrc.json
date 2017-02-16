@@ -1,0 +1,42 @@
+{
+    "extends": "airbnb",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true
+        }
+    },
+    "globals": {
+        "__dirname": true,
+        "window": true,
+        "document": true,
+        "$": true,
+        "google": true
+    },
+    "ignore": ["node_modules/"],
+    "rules": {
+        "no-new": 0,
+        "no-plusplus": 0,
+        "func-names": 0,
+        "no-shadow": 0,
+        "arrow-body-style": 0,
+        "no-param-reassign": 0,
+        "no-mixed-operators": 0,
+        "comma-dangle": 0,
+        "indent": [2, "tab"],
+        "import/no-unresolved": 0,
+        "import/no-extraneous-dependencies": 0,
+        "import/prefer-default-export": 0,
+        "no-tabs": 0,
+        "no-unused-vars": "off",
+        "linebreak-style": "off",
+        "no-console": "off",
+        "new-cap": "off",
+        "array-callback-return": "off",
+        "no-restricted-syntax": [2, "WithStatement"],
+        "class-methods-use-this": "off",
+        "no-debugger": "off"
+    }
+}

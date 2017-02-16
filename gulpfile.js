@@ -12,6 +12,7 @@ var vsource = require('vinyl-source-stream');
 var vbuffer = require('vinyl-buffer');
 var pngquant = require('imagemin-pngquant');
 var runSequence = require('run-sequence');
+var babelify    = require('babelify');
 
 var envProd   = false;
 
@@ -180,6 +181,7 @@ gulp.task('jscs', function () {
 /** Compile Javascript */
 gulp.task('javascript', ['jshint', 'jscs'], function () {
 	var b = browserify({
+		transform: [babelify],
 		entries: './theme-src/js/main.js',
 		debug: true,
 	});
@@ -214,6 +216,7 @@ gulp.task('javascript', ['jshint', 'jscs'], function () {
 gulp.task('jsconcat', function () {
 	return gulp.src([
 			'bower_components/jquery/dist/jquery.min.js',
+			'bower_components/bigtext/dist/bigtext.js',
 			'theme-src/js/vendor/*.js',
 		])
 		.pipe($.concat('vendor.min.js'))
@@ -266,4 +269,3 @@ gulp.task('build', [
 ]);
 
 gulp.task('default', ['build']);
-

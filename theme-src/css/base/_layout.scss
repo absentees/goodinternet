@@ -9,3 +9,7 @@ html {
   @include outer-container;
   position: relative;
 }
+
+.content {
+	@include shift(1);
+}

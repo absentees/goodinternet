@@ -3,13 +3,24 @@ html {
 	margin: 0;
 	padding: 0;
 	border: 0;
+	font-size: 62.5%;
 }
 
+$neat-grid: (
+  columns: 12,
+  gutter: 10px,
+  color: rgba(#00d4ff, 0.25),
+  direction: ltr,
+);
+
 .container {
-  @include outer-container;
+  @include grid-container;
   position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+
 }
 
 .content {
-	@include shift(1);
+	@include grid-push(2);
 }

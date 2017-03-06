@@ -59,8 +59,7 @@ gulp.task('font-awesome', function () {
 gulp.task('styles', ['print-styles', 'sass-lint'], function () {
 	var paths = [
 		'bower_components/normalize-scss/',
-		'bower_components/bourbon/app/assets/stylesheets/',
-		'bower_components/neat/app/assets/stylesheets/',
+		'bower_components/neat/core/',
 		'bower_components/font-awesome/scss/',
 		'bower_components/slick-carousel/slick/',
 	];

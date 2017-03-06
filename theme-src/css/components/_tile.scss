@@ -1,6 +1,7 @@
 .tile {
-	@include span-columns(5);
+	@include grid-column(5);
 	background: #0000FF;
+	margin-bottom: 1rem;
 
 	img {
 		width: 100%;
@@ -8,25 +9,29 @@
 	}
 
 	.caption {
-		padding: 0 2%;
+		padding: 0 2rem;
 
 		.title{
-			/* the founder: */
+			margin: 2rem 0 0 0;
+
 			font-family: Arial-BoldMT;
-			font-size: 39px;
+			font-size: 3.9rem;
 			color: #FFFFFF;
 			letter-spacing: -1px;
+			line-height: 3.9rem;
+
 		}
 
 		.url {
+			margin-top: 0;
+
 			font-family: ArialMT;
-			font-size: 18px;
+			font-size: 1.8rem;
 			color: #FFFFFF;
 			letter-spacing: -0.42px;
 		}
 
 		.description {
-			/* landing page for a b: */
 			font-family: ArialMT;
 			font-size: 18px;
 			color: #FFFFFF;

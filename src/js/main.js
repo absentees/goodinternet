@@ -1,18 +1,14 @@
-import layout from './modules/layout';
+/* globals WebFont */
+/* jshint unused:false */
+import bigtext from 'big-ideas-text';
 
-import $ from 'jquery';
+// $(document).ready(function () {
+// 	if ($('.bigtext').length) {
+// 		$('.bigtext').bigtext();
+// 	}
+// });
 
-
-
-$(document).ready(function () {
-  window.ie8 = $('html').hasClass('lt-ie9');
-
-  const test = new layout();
-  test.init();
-
-	
+document.addEventListener("DOMContentLoaded", function(event) {
+	var heading = document.querySelectorAll('.bigtext');
+	bigtext(heading);
 });
-
-
-
-

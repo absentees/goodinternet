@@ -30,7 +30,7 @@
   *display: inline;
 }
 
-@mixin reset-box-model {
+@mixin reset-box-model() {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -56,28 +56,3 @@
   background-image: url(../img/#{$path}.png);
   background-image: linear-gradient(transparent, transparent), url(../img/#{$path}.svg);
 }
-
-/* Reset unordered list style */
-@mixin reset-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: auto;
-}
-
-@mixin hide-text {
-  overflow: hidden;
-  text-indent: 101%;
-  white-space: nowrap;
-}
-
-
-	// swaps neat 2.0 to desktop first
-	@function _neat-parse-media($media) {
-	  @if type-of($media) == number {
-	    @return "only screen and (max-width: #{$media})";
-	  } @else if type-of($media) == string {
-	    @return "#{$media}";
-	  }
-	}
-

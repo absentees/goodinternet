@@ -38,9 +38,9 @@ var nunjucksEnv = nunjucks.configure('./src/html/views', {
 	noCache: true
 });
 /* Enable Mardown parseing */
-var markdown = require('nunjucks-markdown');
-var marked = require('marked');
-markdown.register(nunjucksEnv, marked);
+// var markdown = require('nunjucks-markdown');
+// var marked = require('marked');
+// markdown.register(nunjucksEnv, marked);
 
 // Handlebar helpers for revisioned asset paths and content
 const handlebarOpts = {
@@ -155,21 +155,14 @@ gulp.task('metalsmith', function (cb) {
 		.destination(dist)
 		.clean(false)
 		.use(collections({
-			sites: {
-				pattern: 'src/html/pages/**/*.md'
-			}
+			sites: 'sites/*.md'
 		}))
-		// .use(metalsmithMarkdown())
+		.use(metalsmithMarkdown())
 		.use(layouts({
 			'engine': 'nunjucks',
 			'directory': 'src/html/views',
 			'rename': true
 		}))
-		.use(writemetadata({            // write the JS object
-			pattern: ['**/*'],            // for each file into .json
-			ignorekeys: ['next', 'previous'],
-			bufferencoding: 'utf8'        // also put 'content' into .json
-  	}))
 		.build(function (err) {
 			if (err) {
 				throw err;

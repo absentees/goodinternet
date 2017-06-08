@@ -1,0 +1,12 @@
+$max-width: 1200px;
+$column: 98px !global;
+$gutter: 20px !global;
+
+@import 'normalize';
+@import 'neat';
+
+// Variables
+@import 'base/*';
+
+// Components
+@import 'components/*';

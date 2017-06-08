@@ -14,6 +14,11 @@ import runSequence from 'run-sequence';
 import webpack from 'webpack-stream';
 var browserSync = require('browser-sync').create();
 var Metalsmith = require('metalsmith');
+var collections = require('metalsmith-collections');
+var layouts     = require('metalsmith-layouts');
+var metalsmithMarkdown    = require('metalsmith-markdown');
+var writemetadata = require('metalsmith-writemetadata');
+
 
 const imageminPngquant = require('imagemin-pngquant');
 
@@ -149,14 +154,22 @@ gulp.task('metalsmith', function (cb) {
 		.source('src/html/pages')
 		.destination(dist)
 		.clean(false)
-		.use(require('metalsmith-metadata-directory')({
-			directory: 'src/html/data/**/*.json',
+		.use(collections({
+			sites: {
+				pattern: 'src/html/pages/**/*.md'
+			}
 		}))
-		.use(require('metalsmith-layouts')({
+		// .use(metalsmithMarkdown())
+		.use(layouts({
 			'engine': 'nunjucks',
 			'directory': 'src/html/views',
 			'rename': true
 		}))
+		.use(writemetadata({            // write the JS object
+			pattern: ['**/*'],            // for each file into .json
+			ignorekeys: ['next', 'previous'],
+			bufferencoding: 'utf8'        // also put 'content' into .json
+  	}))
 		.build(function (err) {
 			if (err) {
 				throw err;
@@ -196,11 +209,7 @@ gulp.task('stylesheets', ['javascript'], (done) => {
 		.pipe($.sass({
 			style: 'expanded',
 			includePaths: paths .concat(require('node-neat').includePaths)
-			
-			
 			.concat(require('node-normalize-scss').includePaths)
-			
-			
 		}))
 		.on('error', $.sass.logError)
 		.on('error', function (e) {
@@ -279,4 +288,3 @@ gulp.task("build", function (callback) {
 gulp.task('publish', function () {
 
 });
-

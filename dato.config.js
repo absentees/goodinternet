@@ -6,22 +6,21 @@
 const util = require('util');
 const fs = require('fs');
 module.exports = (dato, root, i18n) => {
-	root.directory("src/html/data", (dir) => {
-		writeExampleContent(dir,dato);
+	root.directory("src/html/pages/sites", (articlesDir) => {
+		dato.websites.forEach((site) => {
+			console.log(site);
+
+			articlesDir.createPost(
+				`${site.name}.md`, "yaml", {
+					frontmatter: {
+						title: site.name,
+						url: site.url,
+						desktopScreenshot: site.desktopScreenshot.url(),
+						mobileScreenshot: site.mobileScreenshot.url()
+					},
+					content: site.description
+				}
+			);
+		});
 	});
 };
-
-function writeExampleContent(dir,dato) {
-	let results = [];
-	dato.contentCollectionName.forEach((contentTypeName) => {
-		const el = contentTypeName.toMap();
-
-		const content = {
-			title: el.title,
-			text: el.text
-		};
-		results.push(content);
-	});
-
-	dir.createDataFile('example_content.json', 'json', results);
-}

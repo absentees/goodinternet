@@ -930,13 +930,7 @@ bl@^0.9.1:
   dependencies:
     readable-stream "~1.0.26"
 
-bl@^1.0.0:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/bl/-/bl-1.2.1.tgz#cac328f7bee45730d404b692203fcb590e172d5e"
-  dependencies:
-    readable-stream "^2.0.5"
-
-bl@~1.1.2:
+bl@^1.0.0, bl@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/bl/-/bl-1.1.2.tgz#fdca871a99713aa00d19e3bbba41c44787a65398"
   dependencies:
@@ -1365,6 +1359,12 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   resolved "https://registry.yarnpkg.com/cipher-base/-/cipher-base-1.0.3.tgz#eeabf194419ce900da3018c207d212f2a6df0a07"
   dependencies:
     inherits "^2.0.1"
+
+circular-json@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.1.6.tgz#fd692b65f8bce4f2900bea14f74ad681ab294c7f"
+  dependencies:
+    wru ">= 0.0.0"
 
 clap@^1.0.9:
   version "1.1.3"
@@ -1807,11 +1807,15 @@ debug@2.6.3, debug@2.X, debug@^2.1.1, debug@^2.2.0:
   dependencies:
     ms "0.7.2"
 
-debug@2.6.4:
+debug@2.6.4, debug@^2.1.3:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.4.tgz#7586a9b3c39741c0282ae33445c4e8ac74734fe0"
   dependencies:
     ms "0.7.3"
+
+debug@~0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
 
 decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
@@ -4257,7 +4261,7 @@ map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
 
-marked@^0.3.6:
+marked@^0.3.6, marked@~0.3.1:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.6.tgz#b2c6c618fccece4ef86c4fc6cb8a7cbf5aeda8d7"
 
@@ -4300,6 +4304,16 @@ merge-stream@^1.0.0:
   dependencies:
     readable-stream "^2.0.1"
 
+metalsmith-collections@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/metalsmith-collections/-/metalsmith-collections-0.9.0.tgz#a0d19347a51d5fbd026899dfc1f4d68af50e0e17"
+  dependencies:
+    debug "^2.2.0"
+    extend "^3.0.0"
+    multimatch "^2.1.0"
+    read-metadata "^1.0.0"
+    uniq "^1.0.1"
+
 metalsmith-layouts@^1.8.0:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/metalsmith-layouts/-/metalsmith-layouts-1.8.1.tgz#a365d39939d9146cdfe51fadee7d875573fccbdc"
@@ -4312,6 +4326,13 @@ metalsmith-layouts@^1.8.0:
     is-utf8 "^0.2.0"
     lodash.omit "^4.0.2"
     multimatch "^2.0.0"
+
+metalsmith-markdown@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/metalsmith-markdown/-/metalsmith-markdown-0.2.1.tgz#1a1feeb6c76d15407b75271da81509d07932d753"
+  dependencies:
+    debug "~0.7.4"
+    marked "~0.3.1"
 
 metalsmith-metadata-directory@^1.0.1:
   version "1.0.1"
@@ -4326,6 +4347,15 @@ metalsmith-register-helpers@^0.3.0:
   resolved "https://registry.yarnpkg.com/metalsmith-register-helpers/-/metalsmith-register-helpers-0.3.0.tgz#270025491c2b094fc29f06754dbe2b0bc2ffb917"
   dependencies:
     extend "^2.0.0"
+
+metalsmith-writemetadata@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/metalsmith-writemetadata/-/metalsmith-writemetadata-0.4.5.tgz#e2cfe00b85d80d4eb7f4a9da60017534566e6374"
+  dependencies:
+    circular-json "^0.1.6"
+    debug "^2.1.3"
+    multimatch "^2.0.0"
+    node.extend "^1.1.3"
 
 metalsmith@^2.3.0:
   version "2.3.0"
@@ -4432,17 +4462,13 @@ minimatch@~0.2.11:
     lru-cache "2"
     sigmund "~1.0.0"
 
-minimist@0.0.8:
+minimist@0.0.8, minimist@~0.0.1:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
 minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
-
-minimist@~0.0.1:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
 mkdirp@0.3.0:
   version "0.3.0"
@@ -4510,7 +4536,7 @@ ms@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-1.0.0.tgz#59adcd22edc543f7b5381862d31387b1f4bc9473"
 
-multimatch@^2.0.0:
+multimatch@^2.0.0, multimatch@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/multimatch/-/multimatch-2.1.0.tgz#9c7906a22fb4c02919e2f5f75161b4cdbd4b2a2b"
   dependencies:
@@ -4688,7 +4714,7 @@ node-uuid@~1.4.7:
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/node-uuid/-/node-uuid-1.4.8.tgz#b040eb0923968afabf8d32fb1f17f1167fdab907"
 
-node.extend@^1.1.6:
+node.extend@^1.1.3, node.extend@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/node.extend/-/node.extend-1.1.6.tgz#a7b882c82d6c93a4863a5504bd5de8ec86258b96"
   dependencies:
@@ -5314,6 +5340,12 @@ read-all-stream@^3.0.0:
   dependencies:
     pinkie-promise "^2.0.0"
     readable-stream "^2.0.0"
+
+read-metadata@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/read-metadata/-/read-metadata-1.0.0.tgz#6df9cbe51184e8ceb7d0668b40ee5191e6f3dac6"
+  dependencies:
+    yaml-js "0.0.8"
 
 read-only-stream@^2.0.0:
   version "2.0.0"
@@ -6447,6 +6479,10 @@ underscore@1.7.x:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.7.0.tgz#6bbaf0877500d36be34ecaa584e0db9fef035209"
 
+uniq@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/uniq/-/uniq-1.0.1.tgz#b31c5ae8254844a3a8281541ce2b04b865a734ff"
+
 unique-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unique-stream/-/unique-stream-1.0.0.tgz#d59a4a75427447d9aa6c91e70263f8d26a4b104b"
@@ -6870,6 +6906,10 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
 
+"wru@>= 0.0.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/wru/-/wru-0.3.0.tgz#2f04208c7eafc211512da5f047f06aa0032b4c38"
+
 ws@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ws/-/ws-1.1.1.tgz#082ddb6c641e85d4bb451f03d52f06eabdb1f018"
@@ -6930,6 +6970,10 @@ y18n@^3.2.0, y18n@^3.2.1:
 yallist@^2.0.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
+
+yaml-js@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/yaml-js/-/yaml-js-0.0.8.tgz#87cfa5a9613f48e26005420d6a8ee0da6fe8daec"
 
 yargs-parser@^4.1.0:
   version "4.2.1"

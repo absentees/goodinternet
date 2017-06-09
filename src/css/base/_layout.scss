@@ -20,7 +20,3 @@ $neat-grid: (
 	margin: 0 auto;
 
 }
-
-.content {
-	@include grid-push(2);
-}

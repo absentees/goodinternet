@@ -1,5 +1,5 @@
 .tile {
-	@include grid-column(5);
+	@include grid-column(4);
 	background: #0000FF;
 	margin-bottom: 1rem;
 
@@ -9,6 +9,8 @@
 	}
 
 	.caption {
+		height: 200px;
+		overflow-y: scroll;
 		padding: 0 2rem;
 
 		.title{

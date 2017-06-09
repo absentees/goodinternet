@@ -1,5 +1,38 @@
 .modal {
+	position: fixed;
+	top: 1em;
+	left: 50%;
+	transform: translateX(-50%);
 	opacity: 0;
 	height: 0;
 	pointer-events: none;
+
+	.close {
+		background: #0000FF;
+
+		font-family: Arial-BoldMT;
+		font-size: 22px;
+		line-height: 2em;
+		color: white;
+		text-align: center;
+
+		cursor: pointer;
+	}
+
+	img {
+		width: auto;
+		height: 80vh;
+
+		@include grid-media($mobile) {
+			width: 90vw;
+			height: auto;
+		}
+	}
+
+	&.-show {
+		opacity: 1;
+		height: auto;
+		width: auto;
+		pointer-events: all;
+	}
 }

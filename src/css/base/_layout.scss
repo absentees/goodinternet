@@ -13,10 +13,25 @@ $neat-grid: (
   direction: ltr,
 );
 
+$mobile: (
+  columns: 4,
+  gutter: 10px,
+  color: rgba(#00d4ff, 0.25),
+  direction: ltr,
+	media: 600px
+);
+
 .container {
   @include grid-container;
   position: relative;
 	max-width: 1200px;
 	margin: 0 auto;
+	opacity: 1;
+	pointer-events: all;
+
+	&.-hide {
+		opacity: 0;
+		pointer-events: none;
+	}
 
 }

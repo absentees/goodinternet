@@ -3,6 +3,10 @@
 	background: #0000FF;
 	margin-bottom: 1rem;
 
+	@include grid-media($mobile) {
+		@include grid-column(4);
+	}
+
 	img {
 		width: 100%;
 		max-width: 100%;

@@ -8,13 +8,14 @@
 	pointer-events: none;
 
 	.close {
-		background: #0000FF;
+		background: #FFF;
+		padding-right: 1em;
 
-		font-family: Arial-BoldMT;
-		font-size: 22px;
+		font-family: ArialMT;
+		font-size: 16px;
 		line-height: 2em;
-		color: white;
-		text-align: center;
+		color: #000;
+		text-align: right;
 
 		cursor: pointer;
 	}

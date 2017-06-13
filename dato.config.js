@@ -15,7 +15,8 @@ module.exports = (dato, root, i18n) => {
 					frontmatter: {
 						title: site.name,
 						url: site.url,
-						desktopScreenshot: site.desktopScreenshot.url({ w: 800, h: 600, fm: 'jpg' }),
+						desktopScreenshotThumbnail: site.desktopScreenshot.url({ w: 387, h: 275, fm: 'jpg' }),
+						desktopScreenshot: site.desktopScreenshot.url({ w: 1600, h: 1200, fm: 'jpg' }),
 						mobileScreenshot: site.mobileScreenshot.url(),
 						description: site.description
 					}

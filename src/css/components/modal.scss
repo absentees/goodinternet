@@ -1,11 +1,13 @@
 .modal {
 	position: fixed;
-	top: 1em;
+	top: 10em;
 	left: 50%;
 	transform: translateX(-50%);
 	opacity: 0;
 	height: 0;
 	pointer-events: none;
+
+	border-top: 2px solid black;
 
 	.close {
 		background: #0000FF;
@@ -20,12 +22,12 @@
 	}
 
 	img {
-		width: auto;
-		height: 80vh;
+		height: auto;
+		width: 95vw;
 
 		@include grid-media($mobile) {
 			width: 90vw;
-			height: auto;
+			max-height: 70vh;
 		}
 	}
 

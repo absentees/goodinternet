@@ -26,8 +26,6 @@
 		height: auto;
 		width: 95vw;
 
-		cursor: pointer;
-
 		@include grid-media($mobile) {
 			width: 90vw;
 			max-height: 70vh;

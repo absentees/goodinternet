@@ -9,7 +9,7 @@ class Layout {
 	init() {
 		Array.prototype.forEach.call(this.modalTargets, (el) => {
 			el.addEventListener("click", (clickEvent) => {
-				this.showModal(clickEvent.target.src);
+				this.showModal(clickEvent.target.getAttribute('data-fullImg'));
 			});
 		});
 
@@ -30,8 +30,10 @@ class Layout {
 
 	closeModal() {
 		if (this.modal.classList) {
+			this.modalImage.src = "";
 		  this.modal.classList.remove('-show');
 		} else {
+			this.modalImage.src = "";
 		  this.modal.className -= ' ' + '-show';
 		}
 	}

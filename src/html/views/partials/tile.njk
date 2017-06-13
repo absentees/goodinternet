@@ -1,10 +1,10 @@
 <div class="tile">
 	<div class="img">
-		<img src="{{ site.desktopScreenshot }}" alt="">
+		<img data-fullImg="{{ site.desktopScreenshot }}" src="{{ site.desktopScreenshotThumbnail }}" alt="{{ site.title }}">
 	</div>
 	<div class="caption">
 		<h3 class="title">{{ site.title }}</h3>
-		<p class="url">{{ site.url }}</p>
+		<a class="url" target="_blank" href="{{ site.url }}">{{ site.url }}</a>
 		<p class="description">{{ site.description }}</p>
 	</div>
 </div>

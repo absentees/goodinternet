@@ -2,17 +2,15 @@
 /* jshint unused:false */
 import bigtext from 'big-ideas-text';
 import modal from './modal';
-
-// $(document).ready(function () {
-// 	if ($('.bigtext').length) {
-// 		$('.bigtext').bigtext();
-// 	}
-// });
+import tiles from './tile';
 
 document.addEventListener("DOMContentLoaded", function(event) {
 	var heading = document.querySelectorAll('.bigtext');
 	bigtext(heading);
 
-	const test = new modal();
-	test.init();
+	const modalController = new modal();
+	modalController.init();
+	const tileController = new tiles();
+	tileController.init();
+
 });

@@ -7,11 +7,25 @@
 		@include grid-column(4);
 	}
 
-	img {
+	.img {
+		position: relative;
 		width: 100%;
 		max-width: 100%;
+		padding-bottom: 71%;
+
+		overflow: hidden;
 
 		cursor: pointer;
+
+		img {
+			position: absolute;
+			top: 0px;
+			left: 0;
+
+			width: 100%;
+
+			transition: all 15s linear;
+		}
 	}
 
 	.caption {

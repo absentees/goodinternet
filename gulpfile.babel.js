@@ -155,7 +155,11 @@ gulp.task('metalsmith', function (cb) {
 		.destination(dist)
 		.clean(false)
 		.use(collections({
-			sites: 'sites/*.md'
+			sites: {
+				pattern: 'sites/*.md',
+				sortBy: 'date',
+				reverse: true
+			}
 		}))
 		.use(metalsmithMarkdown())
 		.use(layouts({

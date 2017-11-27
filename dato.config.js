@@ -8,13 +8,12 @@ const fs = require('fs');
 module.exports = (dato, root, i18n) => {
 	root.directory("src/html/pages/sites", (articlesDir) => {
 		dato.websites.forEach((site) => {
-			console.log(site);
-
 			articlesDir.createPost(
 				`${site.name}.md`, "yaml", {
 					frontmatter: {
 						title: site.name,
 						url: site.url,
+						date: site.updatedAt,
 						desktopScreenshotThumbnail: site.desktopScreenshot.url({ w: 387, fm: 'pjpg' }),
 						desktopScreenshot: site.desktopScreenshot.url({ w: 1600, fm: 'pjpg' }),
 						mobileScreenshot: site.mobileScreenshot.url(),

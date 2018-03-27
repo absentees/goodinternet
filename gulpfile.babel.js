@@ -11,7 +11,8 @@ import browserify from "browserify";
 import vsource from "vinyl-source-stream";
 import vbuffer from "vinyl-buffer";
 import runSequence from 'run-sequence';
-import webpack from 'webpack-stream';
+const gulpWebpack = require('webpack-stream');
+const webpack = require('webpack');
 var browserSync = require('browser-sync').create();
 var Metalsmith = require('metalsmith');
 var collections = require('metalsmith-collections');
@@ -124,7 +125,7 @@ gulp.task('jshint', () => {
 /** Compile Javascript */
 gulp.task('javascript', ['jshint'], function () {
 	var out = gulp.src('./src/js/main.js')
-		.pipe(webpack(require('./webpack.config.js')))
+		.pipe(gulpWebpack(require('./webpack.config.js'), webpack))
 		.on('error', function (e) {
 			$.notify().write(e);
 		});

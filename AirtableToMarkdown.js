@@ -30,9 +30,11 @@ base('Good').select({
         }
 
 
-        var outputPath = path.join(__dirname, 'src/html/pages/sites', `${filename}.md`)
+        var outputPath = path.join(__dirname, 'src/html/pages/sites', `${filename}.md`);
+
         var frontMatter = `---
 title: ${record.get('Name')}
+date: ${record.get('Date Added')}
 url: ${record.get('URL')}
 desktopScreenshotThumbnail: ${desktopThumbURL}
 desktopScreenshot: ${record.get('Desktop Screenshot')[0].url}

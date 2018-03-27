@@ -3,7 +3,7 @@
 /dist
 /node_modules
 /src/data
-/src/html/pages/sites
+/src/html/pages/sites/*
 *.log
 
 

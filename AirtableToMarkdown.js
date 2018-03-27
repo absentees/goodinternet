@@ -11,6 +11,8 @@ var base = new Airtable({
     apiKey: process.env.GOOD_INTERNET_AIRTABLE_API_KEY
 }).base(process.env.GOOD_INTERNET_BASE_ID);
 
+fs.mkdirSync(path.join(__dirname, 'src/html/pages/sites'));
+
 base('Good').select({
     view: "Grid view"
 }).eachPage(function page(records, fetchNextPage) {

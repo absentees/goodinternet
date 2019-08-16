@@ -13,7 +13,8 @@ module.exports = {
         apiKey: process.env.AIRTABLE_API_KEY, // required
         baseId: process.env.AIRTABLE_BASE_ID, // required
         tableName: 'Good', // required
-        typeName: 'Site' // required
+        typeName: 'Site', // required
+        route: '/:id'
       }
     }
   ]

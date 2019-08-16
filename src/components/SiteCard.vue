@@ -1,6 +1,6 @@
 <template>
     <li class="siteCard">
-        <a :href="site.url">{{ site.name }}</a>
+        <g-link :to="site.path">{{site.name}}</g-link>
         <div class="img-container">
             <img :src="site.desktopScreenshot[0].url" alt="">
         </div>

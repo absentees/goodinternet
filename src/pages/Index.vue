@@ -20,6 +20,7 @@ query AllSites {
       node {
         id
         name
+        path
         desktopScreenshot {
           url
         }

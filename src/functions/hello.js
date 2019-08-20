@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import GoodLib from './good-lib';
 
-export default async (req, res) => {
+export async function handler (event, context) {
 	try {
 			let goodLib = new GoodLib();
 			let websites = await goodLib.scrapeDesignerNews();

@@ -7,8 +7,8 @@ const path = require("path");
 const axios = require("axios");
 const imgur = require("imgur");
 const chrome = require('chrome-aws-lambda');
-const puppeteer = require('puppeteer-core'); // Use on prod
-// const puppeteer = require('puppeteer'); // Use on local
+// const puppeteer = require('puppeteer-core'); // Use on prod
+const puppeteer = require('puppeteer'); // Use on local
 
 const Airtable = require("airtable");
 Airtable.configure({

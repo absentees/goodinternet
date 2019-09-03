@@ -1,54 +1,150 @@
 /* eslint-disable */
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
+
+const fs = require("fs");
+const imgur = require("imgur");
+const chrome = require('chrome-aws-lambda');
+// const puppeteer = require('puppeteer-core'); // Use on prod
+const puppeteer = require('puppeteer'); // Use on local
+
+
 
 exports.handler = async function(event, context) {
-  try {
-    const response = await fetch("https://icanhazdadjoke.com", {
-      headers: { Accept: "application/json" }
-    });
-    if (!response.ok) {
-      // NOT res.status >= 200 && res.status < 300
-      return { statusCode: response.status, body: response.statusText };
-    }
-    const data = await response.json();
+    try {
+		const screenshot = await screenshotURL('https://www.google.com','.');
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify(event)
-    };
-  } catch (err) {
-    console.log(err); // output to netlify function log
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ msg: err.message }) // Could be a custom message or object i.e. JSON.stringify(err)
-    };
-  }
+        return {
+            statusCode: 200,
+            body: JSON.stringify({msg: "screenshot taken"})
+        };
+    } catch (err) {
+        console.log(err); // output to netlify function log
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ msg: err.message }) // Could be a custom message or object i.e. JSON.stringify(err)
+        };
+    }
 };
 
-	/**
-	 *
-	 *
-	 * @returns
-	 * @memberof GoodLib
-	 */
-	async function scrapeDesignerNews() {
-		let websites = await x(
-			"https://www.designernews.co/badges/design",
-			".story-list-item", [{
-				url: ".montana-item-title@href",
-				upvotes: ".story-vote-count"
-			}]
-		).then(function (res) {
-			return res.map(website => {
-				return {
-					title: website.url,
-					url: website.url,
-					upvotes: parseInt(website.upvotes)
-				};
-			});
-		});
+async function validateUrl(url) {
+    const urlRegex = /https?:\/\/|localhost|\./;
 
-		return Promise.resolve(websites);
-	}
+    if (urlRegex.test(url)) {
+        return Promise.resolve(url);
+    } else {
+        return Promise.reject("URL is no good, please try again.");
+    }
+}
 
+/**
+ * Takes a desktop and mobile screenshot at a given path of a given url, returns an array
+ *
+ * @param {*} url
+ * @param {*} filePath
+ * @returns
+ * @memberof GoodLib
+ */
+async function screenshotURL(url, filePath) {
+    console.log(`Taking screenshots of ${url}`);
 
+    const browser = await puppeteer.launch({
+        args: chrome.args,
+        executablePath: await chrome.executablePath,
+        headless: chrome.headless
+    });
+
+    const page = await browser.newPage();
+
+    await page.goto(url, {
+        waitUntil: "networkidle0"
+    });
+    await page.setViewport({
+        width: 1280,
+        height: 800
+    });
+    await page.screenshot({
+        path: `${filePath}/desktop.jpg`,
+        fullPage: true,
+        type: "jpeg"
+    });
+    await page.setViewport({
+        width: 320,
+        height: 480,
+        isMobile: true
+    });
+    await page.reload({
+        waitUntil: "networkidle0"
+    });
+    await page.screenshot({
+        path: `${filePath}/mobile.jpg`,
+        fullPage: true,
+        type: "jpeg"
+    });
+    await browser.close();
+
+    return Promise.resolve();
+}
+
+/**
+ *
+ *
+ * @param {*} image
+ * @returns
+ * @memberof GoodLib
+ */
+async function uploadToImgur(image) {
+    console.log(`Uploading images to Imgur: ${image}`);
+
+    imgur.setCredentials(
+        process.env.IMGUR_USER,
+        process.env.IMGUR_PASSWORD,
+        process.env.IMGUR_CLIENTID
+    );
+
+    let json = await imgur.uploadFile(
+        image,
+        process.env.GOOD_INTERNET_IMGUR_ALBUM_ID
+    );
+    return Promise.resolve(json.data.link);
+}
+
+async function addToAirtable(title, url, desktopImageLink, mobileImageLink) {
+    console.log("Uploading files");
+    console.log(url);
+
+    let record = await base("Good").create({
+        Name: title,
+        URL: url,
+        "Desktop Screenshot": [
+            {
+                url: desktopImageLink
+            }
+        ],
+        "Mobile Screenshot": [
+            {
+                url: mobileImageLink
+            }
+        ]
+    });
+
+    return Promise.resolve(record);
+}
+
+/**
+ *
+ *
+ * @param {*} website
+ * @returns
+ * @memberof GoodLib
+ */
+async function deleteFile(filePath) {
+    fs.unlink(filePath, err => {
+        if (err) {
+            console.error("Failed to delete local file: " + error);
+        } else {
+            console.log("Deleted local: " + filePath);
+        }
+    });
+
+    return Promise.resolve();
+}

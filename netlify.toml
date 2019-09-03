@@ -1,4 +1,4 @@
 [build]
     build = "yarn build"
-    functions = "functions-build"
+    functions = "src/functions"
     publish = "dist"

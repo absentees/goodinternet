@@ -11,11 +11,14 @@ const puppeteer = require('puppeteer'); // Use on local
 
 exports.handler = async function(event, context) {
     try {
-		const screenshot = await screenshotURL('https://www.google.com','.');
+
+		await auth(event.queryStringParameters.screenshotKey);
+		const url = await validateUrl(event.queryStringParameters.url);
+		const screenshot = await screenshotURL(url,'.');
 
         return {
             statusCode: 200,
-            body: JSON.stringify({msg: "screenshot taken"})
+            body: JSON.stringify({msg: `screenshot taken: ${url}`})
         };
     } catch (err) {
         console.log(err); // output to netlify function log
@@ -26,13 +29,21 @@ exports.handler = async function(event, context) {
     }
 };
 
+async function auth(key) {
+	if(key != process.env.SCREENSHOT_KEY || key == null) {
+		throw new Error("Could not authenticate");
+	} else {
+		Promise.resolve();
+	}
+}
+
 async function validateUrl(url) {
     const urlRegex = /https?:\/\/|localhost|\./;
 
     if (urlRegex.test(url)) {
         return Promise.resolve(url);
     } else {
-        return Promise.reject("URL is no good, please try again.");
+		throw new Error("URL is no good, please try again.");
     }
 }
 
